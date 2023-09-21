@@ -13,6 +13,7 @@ public class TipCalculator {
         double total = 0;
         String items = "\n";
         String itemName;
+        int itemCount;
         System.out.print("Enter price of item: ");
         double price = scan.nextDouble();
 
@@ -20,14 +21,16 @@ public class TipCalculator {
             scan.nextLine();
             System.out.print("Enter item name: ");
             itemName = scan.nextLine();
-            items += (itemName + "\n");
-            total += price;
+            System.out.print("Total number ordered: ");
+            itemCount = scan.nextInt();
+            items += (itemName + " x " + itemCount + "\n");
+            total += price * itemCount;
 
             System.out.print("Enter price of item (-1 to continue): ");
             price = scan.nextDouble();
         }
 
-        double totalTip = total * (percentTip / 100);
+        double totalTip = total * ((double) percentTip / 100);
         System.out.println("---------------------------------------------------");
         System.out.println("Total price: $" + String.format("%.2f",total));
         System.out.println("Tip percentage: %" + percentTip);
@@ -37,7 +40,7 @@ public class TipCalculator {
         System.out.println("Per person tip cost: $" + String.format("%.2f",(totalTip / numPeople)));
         System.out.println("Total cost per person: $" + String.format("%.2f",((total + totalTip) / numPeople)));
         System.out.println("---------------------------------------------------");
-        System.out.println("Items ordered: " + String.format("%.2f",items));
+        System.out.println("Items ordered: " + items);
 
     }
 }
