@@ -3,20 +3,21 @@ import java.util.Scanner;
 public class TipCalculator {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.print("Enter amountof people: ");
+        System.out.println("Welcome to Tip Calculator!!");
+        System.out.print("Enter amount of people: ");
         int numPeople = scan.nextInt();
 
         System.out.print("Enter tip percentage: ");
         double percentTip = scan.nextDouble();
 
         double total = 0;
-        String items = "";
+        String items = "\n";
         String itemName;
         System.out.print("Enter price of item: ");
         double price = scan.nextDouble();
 
         while (price != -1) {
-
+            scan.nextLine();
             System.out.print("Enter item name: ");
             itemName = scan.nextLine();
             items += (itemName + "\n");
@@ -24,9 +25,17 @@ public class TipCalculator {
 
             System.out.print("Enter price of item: ");
             price = scan.nextDouble();
-
         }
 
+        double totalTip = total * percentTip;
+        System.out.println("Total price: $" + String.format("%.2f",total));
+        System.out.println("Tip percentage: %" + String.format("%.2f",percentTip));
+        System.out.println("Total tip amount: $" + String.format("%.2f",totalTip));
+        System.out.println("Total bill after tip: $" + String.format("%.2f",(total + totalTip)));
+        System.out.println("Per person cost before tip: $" + String.format("%.2f",(total / numPeople)));
+        System.out.println("Per person tip cost: $" + String.format("%.2f",(totalTip / numPeople)));
+        System.out.println("Total cost per person: $" + String.format("%.2f",((total + totalTip) / numPeople)));
+        System.out.println("Items ordered: " + String.format("%.2f",items));
 
     }
 }
